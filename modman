@@ -1,0 +1,6 @@
+# Extendix_ItemOptions definition
+app/etc/modules/*.xml                                          app/etc/modules/
+app/code/local/*                                               app/code/local/
+app/design/adminhtml/default/default/layout/*                  app/design/adminhtml/default/default/layout/
+app/design/adminhtml/default/default/template/*                app/design/adminhtml/default/default/template/
+js/*                                                           js/

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @author Tsvetan Stoychev <ceckoslab@gmail.com>
+* @license http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+*/
+-->
+<layout>
+    <adminhtml_sales_order_view>
+        <reference name="head">
+            <action method="addItem">
+                <type>js_css</type>
+                <name>prototype/windows/themes/default.css</name>
+            </action>
+            <action method="addItem">
+                <type>js_css</type>
+                <name>prototype/windows/themes/magento.css</name>
+            </action>
+            <action method="addCss">
+                <name>lib/prototype/windows/themes/magento.css</name>
+            </action>
+            <action method="addJs">
+                <file>extendix/itemoptions/common.js</file>
+            </action>
+        </reference>
+
+        <reference name="order_items">
+            <action method="addColumnRender">
+                <column>name</column>
+                <block>adminhtml/sales_items_column_name</block>
+                <template>extendix/itemoptions/sales/items/column/name.phtml</template>
+            </action>
+        </reference>
+    </adminhtml_sales_order_view>
+
+    <ADMINHTML_ORDER_EDIT_CUSTOM_OPTIONS>
+        <block type="adminhtml/template" name="order.item.customoptions.edit.form" template="extendix/itemoptions/popup/edit/form.phtml">
+            <block type="adminhtml/catalog_product_composite_fieldset" name="product.composite.fieldset">
+                <block name="product.composite.fieldset.options" type="adminhtml/catalog_product_composite_fieldset_options" template="extendix/itemoptions/catalog/product/composite/fieldset/options.phtml">
+                    <action method="addOptionRenderer"><type>text</type><block>catalog/product_view_options_type_text</block><template>extendix/itemoptions/catalog/product/composite/fieldset/options/type/text.phtml</template></action>
+                    <action method="addOptionRenderer"><type>file</type><block>catalog/product_view_options_type_file</block><template>extendix/itemoptions/catalog/product/composite/fieldset/options/type/file.phtml</template></action>
+                    <action method="addOptionRenderer"><type>select</type><block>extendix_itemoptions/adminhtml_product_view_options_type_select</block><template>extendix/itemoptions/catalog/product/composite/fieldset/options/type/select.phtml</template></action>
+                    <action method="addOptionRenderer"><type>date</type><block>catalog/product_view_options_type_date</block><template>extendix/itemoptions/catalog/product/composite/fieldset/options/type/date.phtml</template></action>
+                    <block type="core/template" name="product.composite.fieldset.options.js" as="options_js" template="catalog/product/composite/fieldset/options/js.phtml"/>
+                </block>
+                <block type="adminhtml/catalog_product_composite_fieldset_qty" name="product.composite.fieldset.qty" template="extendix/itemoptions/catalog/product/composite/fieldset/qty.phtml"/>
+            </block>
+        </block>
+    </ADMINHTML_ORDER_EDIT_CUSTOM_OPTIONS>
+
+</layout>
